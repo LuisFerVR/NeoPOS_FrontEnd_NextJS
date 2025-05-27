@@ -1,5 +1,5 @@
 import { CategoriesResponseSchema } from "@/app/src/schemas";
-import Logo from "./logo";
+import Logo from "../ui/Logo";
 import Link from "next/link";
 
 async function getCategories() {
