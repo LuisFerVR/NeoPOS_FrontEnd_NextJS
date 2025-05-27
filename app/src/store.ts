@@ -6,6 +6,7 @@ interface Store {
     contents: ShoppingCart;
     addToCart: (product: Product) => void;
     updateQuantity: (id: Product['id'], quantity: number) => void;
+    removeFromCart: (id: Product['id']) => void;
 }
 
 export const useStore = create<Store>()(devtools((set, get) => ({
@@ -44,5 +45,11 @@ export const useStore = create<Store>()(devtools((set, get) => ({
             contents
         }))
         
+    },
+
+    removeFromCart(id) {
+        set((stete) => ({
+            contents: stete.contents.filter(item => item.productId !== id)
+        }))
     }
 })))
