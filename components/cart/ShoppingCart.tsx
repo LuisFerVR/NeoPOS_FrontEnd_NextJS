@@ -8,15 +8,22 @@ export default function ShoppingCart() {
 
   return (
     <>
-      <h2 className="text-4xl font-bold text-gary-900">Resumen de Venta</h2>
-      <ul className="mt-6 divide-y divide-gar-200 border-t border-gary-200 text-sm font-medium text-gray-500">
-        {contents.map((item) => (
-          <ShoppingCartItem 
-            key={item.productId}
-            item={item}
-          />
-        ))}
-      </ul>
+    {contents.length ? (
+      <>
+        <h2 className="text-4xl font-bold text-gary-900">Resumen de Venta</h2>
+        <ul className="mt-6 divide-y divide-gar-200 border-t border-gary-200 text-sm font-medium text-gray-500">
+          {contents.map((item) => (
+            <ShoppingCartItem 
+              key={item.productId}
+              item={item}
+            />
+          ))}
+        </ul>
+      </>
+    ) : (
+      <h2 className="text-4xl font-bold text-gary-900">No hay productos en el carrito</h2>
+    )
+    }
     </>
   )
 }
