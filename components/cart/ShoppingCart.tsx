@@ -4,6 +4,7 @@ import { useStore } from "@/app/src/store";
 import ShoppingCartItem from "./ShoppingCarItem";
 import Amount from "./Amount";
 import CouponForm from "./CouponForm";
+import SubmitOrderForm from "./SubmitOrderForm";
 
 export default function ShoppingCart() {
   const contents = useStore((state) => state.contents);
@@ -37,6 +38,7 @@ export default function ShoppingCart() {
           />
         </dl>
         <CouponForm />
+        <SubmitOrderForm />
       </>
     ) : (
       <h2 className="text-4xl font-bold text-gary-900">No hay productos en el carrito</h2>
