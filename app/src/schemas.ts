@@ -75,6 +75,11 @@ export const TransactionResponseSchema = z.object({
   contents: z.array(ContentsSchema)
 })
 
+export const ProductResponseSchema = z.object({
+  products: z.array(ProductSchema),
+  total: z.number(),
+})
+
 export const TransactionsResponseSchema = z.array(TransactionResponseSchema)
 //types
 export type Product = z.infer<typeof ProductSchema>;
