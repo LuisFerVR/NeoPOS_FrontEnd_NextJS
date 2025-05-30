@@ -3,7 +3,7 @@ import { ProductResponseSchema } from '../../src/schemas';
 import ProductsTable from "@/components/products/ProductsTable";
 
 async function getProducts () {
-  const url = `${process.env.API_URL}/products;}`
+  const url = `${process.env.API_URL}/products`
   const req = await fetch(url);
   const res = await req.json();
   const data = ProductResponseSchema.parse(res);
