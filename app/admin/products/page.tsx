@@ -4,6 +4,7 @@ import ProductsTable from "@/components/products/ProductsTable";
 import { isValidPage } from "@/app/src/utils";
 import { redirect } from "next/navigation";
 import Pagination from "@/components/ui/Pagination";
+import Link from "next/link";
 
 type SearchParams = Promise<{ page: string }>;
 
@@ -35,6 +36,12 @@ export default async function ProductsPage({searchParams}:{searchParams: SearchP
 
   return (
     <>
+      <Link
+        href="/admin/products/new"
+        className="inline-block px-4 py-2 mb-4 text-sm font-semibold text-black bg-green-600 rounded-md hover:bg-green-700"
+      >
+        Nuevo Producto
+      </Link>
       <Heading>Administrar productos</Heading>
       <ProductsTable products={products}/>
       <Pagination page={pageInNumber} totalPages={totalPages} />
