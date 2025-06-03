@@ -1,4 +1,4 @@
-import { CategoriesResponseSchema } from "@/app/src/schemas";
+import { CategoriesResponseSchema, Product } from "@/app/src/schemas";
 
 async function getCategories() {
     const url = `${process.env.API_URL}/categories`;
@@ -11,7 +11,7 @@ async function getCategories() {
     return categories;
 }
 
-export default async function ProductForm() {
+export default async function ProductForm({product}: {product?: Product}) {
     const categories = await getCategories();
 
   return (
@@ -27,6 +27,7 @@ export default async function ProductForm() {
           placeholder="Nombre Producto"
           className="border border-gray-300 w-full p-2"
           name="name"
+          defaultValue={product?.name}
         />
       </div>
 
@@ -42,6 +43,7 @@ export default async function ProductForm() {
           className="border border-gray-300 w-full p-2"
           name="price"
           min={0}
+          defaultValue={product?.price}
         />
       </div>
 
@@ -57,6 +59,7 @@ export default async function ProductForm() {
           className="border border-gray-300 w-full p-2"
           name="inventory"
           min={0}
+          defaultValue={product?.inventory}
         />
       </div>
 
@@ -68,7 +71,8 @@ export default async function ProductForm() {
         <select
           id="categoryId"
           className="border border-gray-300 w-full p-2 bg-white"
-          name="categoryId" 
+          name="categoryId"
+          defaultValue={product?.categoryId}
         >
           <option value="">Seleccionar Categoría</option>
           {categories.map(category => (

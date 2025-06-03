@@ -2,6 +2,7 @@ import { Product } from "@/app/src/schemas"
 import Image from "next/image"
 import { formatCurrency } from '../../app/src/utils';
 import Link from "next/link";
+import DeleteProductForm from "./DeleteProductForm";
 
 export default function ProductsTable({products}: {products: Product[]}) {
 
@@ -59,13 +60,9 @@ export default function ProductsTable({products}: {products: Product[]}) {
                                 Editar <span className="sr-only">{product.name}</span>
                             </Link>
 
-                            <form>
-                                <input
-                                    type="submit"
-                                    value='Eliminar'
-                                    className="text-red-600 hover:text-red-800 cursor-pointer bg-transparent"
-                                />
-                            </form>
+                            <DeleteProductForm 
+                              id={product.id}
+                            />
                         </div>
                       </td>
                     </tr>

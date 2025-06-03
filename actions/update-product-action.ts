@@ -1,6 +1,6 @@
 "use server";
 
-import { ProductFormSchema } from "@/app/src/schemas";
+import { Product, ProductFormSchema } from "@/app/src/schemas";
 import { ErrorResponseSchema } from '../app/src/schemas';
 
 type ActionStateType = {
@@ -8,7 +8,7 @@ type ActionStateType = {
     success: string;
 }
 
-export async function addProduct(prevState: ActionStateType, formData: FormData) {
+export async function updateProduct(productId: Product['id'],prevState: ActionStateType, formData: FormData) {
     const product = ProductFormSchema.safeParse({
         name: formData.get('name'),
         price: formData.get('price'),
@@ -23,10 +23,10 @@ export async function addProduct(prevState: ActionStateType, formData: FormData)
         }
     }
     
-    const url = `${process.env.API_URL}/products`;
+    const url = `${process.env.API_URL}/products/${productId}`;
 
     const req = await fetch(url, {
-        method: 'POST',
+        method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
         },
@@ -45,6 +45,6 @@ export async function addProduct(prevState: ActionStateType, formData: FormData)
 
     return {
         errors: [],
-        success: 'Producto Agregado Correctamente'
+        success: 'Producto Aatualizado Correctamente'
     }
 }
