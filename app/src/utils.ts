@@ -31,6 +31,10 @@ export function getImagePath (image: string) {
   if( image.startsWith(cloudinaryBaseUrl)) {
     return image;
   }else {
-    return `${process.env.API_URL}/img/${image}`
+    if (process.env.API_URL) {
+      return `${process.env.API_URL}/img/${image}`;
+    } else {
+      return `${process.env.NEXT_PUBLIC_API_URL}/img/${image}`
+    }
   }
 }

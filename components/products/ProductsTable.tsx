@@ -37,7 +37,7 @@ export default function ProductsTable({products}: {products: Product[]}) {
                 {products.map(product => (
                     <tr key={product.id}>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        <Image 
+                        <Image
                             src={getImagePath(product.image)}
                             alt={product.name}
                             width={120}
