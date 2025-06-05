@@ -1,6 +1,6 @@
 import { Product } from "@/app/src/schemas"
 import Image from "next/image"
-import { formatCurrency } from '../../app/src/utils';
+import { formatCurrency, getImagePath } from '../../app/src/utils';
 import Link from "next/link";
 import DeleteProductForm from "./DeleteProductForm";
 
@@ -38,7 +38,7 @@ export default function ProductsTable({products}: {products: Product[]}) {
                     <tr key={product.id}>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                         <Image 
-                            src={`${process.env.API_URL}/img/${product.image}`}
+                            src={getImagePath(product.image)}
                             alt={product.name}
                             width={120}
                             height={120}
