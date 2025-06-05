@@ -1,5 +1,5 @@
 import { Transaction } from "@/app/src/schemas"
-import { formatCurrency } from "@/app/src/utils"
+import { formatCurrency, getImagePath } from "@/app/src/utils"
 import Image from "next/image"
 
 export default function TransactionSummary({transaction}: {transaction: Transaction}) {
@@ -17,7 +17,7 @@ export default function TransactionSummary({transaction}: {transaction: Transact
               <div className='flex items-center space-x-6 '>
                 <div className='relative w-32 h-32'>
                   <Image
-                    src={`${process.env.NEXT_PUBLIC_API_URL}/img/${item.product.image}`}
+                    src={getImagePath(item.product.image)}
                     alt={item.product.name}
                     width={128}
                     height={128}
